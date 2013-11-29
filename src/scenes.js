@@ -1,10 +1,9 @@
 Crafty.scene('Loading', function(){
 
-  Crafty.load(['assets/sprite-sheet.png', 'assets/mountain-rise.png'], function(){
+  Crafty.load(['assets/character-sprites.png', 'assets/terrain-sprites.png'], function(){
 
-    Crafty.sprite(32, 'assets/sprite-sheet.png', {
+    Crafty.sprite(32, 'assets/character-sprites.png', {
       spr_player:  [0, 0],
-      spr_painting: [0, 1],
     });
 
     Crafty.scene('Game');
