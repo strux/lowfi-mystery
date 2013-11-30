@@ -33,3 +33,63 @@ Crafty.c('PlayerCharacter', {
     });
   },
 });
+
+Crafty.c('Sand', {
+  init: function() {
+    this.requires('Canvas, Actor, 2D, spr_sand')
+  }
+});
+
+Crafty.c('BeachNE', {
+  init: function() {
+    this.requires('Canvas, Actor, 2D, spr_beach_ne')
+  }
+});
+
+Crafty.c('BeachN', {
+  init: function() {
+    this.requires('Canvas, Actor, 2D, spr_beach_n')
+  }
+});
+
+Crafty.c('BeachNW', {
+  init: function() {
+    this.requires('Canvas, Actor, 2D, spr_beach_nw')
+  }
+});
+
+Crafty.c('BeachW', {
+  init: function() {
+    this.requires('Canvas, Actor, 2D, spr_beach_w')
+  }
+});
+
+Crafty.c('BeachSW', {
+  init: function() {
+    this.requires('Canvas, Actor, 2D, spr_beach_sw')
+  }
+});
+
+Crafty.c('BeachS', {
+  init: function() {
+    this.requires('Canvas, Actor, 2D, spr_beach_s')
+  }
+});
+
+Crafty.c('BeachSE', {
+  init: function() {
+    this.requires('Canvas, Actor, 2D, spr_beach_se')
+  }
+});
+
+Crafty.c('BeachE', {
+  init: function() {
+    this.requires('Canvas, Actor, 2D, spr_beach_e')
+  }
+});
+
+Crafty.c('ShallowWater', {
+  init: function() {
+    this.requires('Canvas, Actor, 2D, spr_shallow_water')
+  }
+});
