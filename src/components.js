@@ -1,3 +1,38 @@
+Crafty.c('Map', {
+  tileNorthOf: function(x, y) {
+    if(this[x] && this[x][y-1]) return this[x][y-1]
+    return '';
+  },
+  tileNorthEastOf: function(x, y) {
+    if(this[x+1] && this[x+1][y-1]) return this[x+1][y-1]
+    return '';
+  },
+  tileEastOf: function(x, y) {
+    if(this[x+1] && this[x+1][y]) return this[x+1][y]
+    return '';
+  },
+  tileSouthEastOf: function(x, y) {
+    if(this[x+1] && this[x+1][y+1]) return this[x+1][y+1]
+    return '';
+  },
+  tileSouthOf: function(x, y) {
+    if(this[x] && this[x][y+1]) return this[x][y+1]
+    return '';
+  },
+  tileSouthWestOf: function(x, y) {
+    if(this[x-1] && this[x-1][y+1]) return this[x-1][y+1]
+    return '';
+  },
+  tileWestOf: function(x, y) {
+    if(this[x-1] && this[x-1][y]) return this[x-1][y]
+    return '';
+  },
+  tileNorthWestOf: function(x, y) {
+    if(this[x-1] && this[x-1][y-1]) return this[x-1][y-1]
+    return '';
+  },
+})
+
 Crafty.c('PlayerCharacter', {
   init: function() {
     var down_y  = 0,
@@ -5,7 +40,7 @@ Crafty.c('PlayerCharacter', {
         right_y = 2,
         up_y    = 3,
         y;
-    this.requires('Canvas, Actor, Fourway, Collision, spr_player, SpriteAnimation')
+    this.requires('DOM, Actor, Fourway, Collision, spr_player, SpriteAnimation')
     .fourway(4)
     .animate('PlayerMovingDown',  1, down_y,  3)
     .animate('PlayerMovingLeft',  1, left_y,  3)
@@ -31,65 +66,171 @@ Crafty.c('PlayerCharacter', {
         this.sprite(0, y);
       }
     });
+    this.bind('Move', function(data) {
+      Crafty.viewport.scroll('_x', -(this.x + (this.w / 2) - (Crafty.viewport.width / 2) ));
+      Crafty.viewport.scroll('_y', -(this.y + (this.h / 2) - (Crafty.viewport.height / 2) ));
+    });
   },
 });
 
-Crafty.c('Sand', {
+Crafty.c('Beach', {
   init: function() {
-    this.requires('Canvas, Actor, 2D, spr_sand')
+    this.requires('DOM, Actor, 2D, spr_beach')
+  }
+});
+
+Crafty.c('BeachNWI', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_beach_nwi')
+  }
+});
+
+Crafty.c('BeachNEI', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_beach_nei')
+  }
+});
+
+Crafty.c('BeachSEI', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_beach_sei')
+  }
+});
+
+Crafty.c('BeachSWI', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_beach_swi')
   }
 });
 
 Crafty.c('BeachNE', {
   init: function() {
-    this.requires('Canvas, Actor, 2D, spr_beach_ne')
+    this.requires('DOM, Actor, 2D, spr_beach_ne')
   }
 });
 
 Crafty.c('BeachN', {
   init: function() {
-    this.requires('Canvas, Actor, 2D, spr_beach_n')
+    this.requires('DOM, Actor, 2D, spr_beach_n')
   }
 });
 
 Crafty.c('BeachNW', {
   init: function() {
-    this.requires('Canvas, Actor, 2D, spr_beach_nw')
+    this.requires('DOM, Actor, 2D, spr_beach_nw')
   }
 });
 
 Crafty.c('BeachW', {
   init: function() {
-    this.requires('Canvas, Actor, 2D, spr_beach_w')
+    this.requires('DOM, Actor, 2D, spr_beach_w')
   }
 });
 
 Crafty.c('BeachSW', {
   init: function() {
-    this.requires('Canvas, Actor, 2D, spr_beach_sw')
+    this.requires('DOM, Actor, 2D, spr_beach_sw')
   }
 });
 
 Crafty.c('BeachS', {
   init: function() {
-    this.requires('Canvas, Actor, 2D, spr_beach_s')
+    this.requires('DOM, Actor, 2D, spr_beach_s')
   }
 });
 
 Crafty.c('BeachSE', {
   init: function() {
-    this.requires('Canvas, Actor, 2D, spr_beach_se')
+    this.requires('DOM, Actor, 2D, spr_beach_se')
   }
 });
 
 Crafty.c('BeachE', {
   init: function() {
-    this.requires('Canvas, Actor, 2D, spr_beach_e')
+    this.requires('DOM, Actor, 2D, spr_beach_e')
   }
 });
 
 Crafty.c('ShallowWater', {
   init: function() {
-    this.requires('Canvas, Actor, 2D, spr_shallow_water')
+    this.requires('DOM, Actor, 2D, spr_shallow')
+  }
+});
+
+Crafty.c('DeepWaterN', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_deep_n')
+  }
+});
+
+Crafty.c('DeepWaterNE', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_deep_ne')
+  }
+});
+
+Crafty.c('DeepWaterE', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_deep_e')
+  }
+});
+
+Crafty.c('DeepWaterSE', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_deep_se')
+  }
+});
+
+Crafty.c('DeepWaterS', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_deep_s')
+  }
+});
+
+Crafty.c('DeepWaterSW', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_deep_sw')
+  }
+});
+
+Crafty.c('DeepWaterW', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_deep_w')
+  }
+});
+
+Crafty.c('DeepWaterNW', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_deep_nw')
+  }
+});
+
+Crafty.c('DeepWater', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_deep_water')
+  }
+});
+
+Crafty.c('DeepWaterNWI', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_deep_nwi')
+  }
+});
+
+Crafty.c('DeepWaterNEI', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_deep_nei')
+  }
+});
+
+Crafty.c('DeepWaterSEI', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_deep_sei')
+  }
+});
+
+Crafty.c('DeepWaterSWI', {
+  init: function() {
+    this.requires('DOM, Actor, 2D, spr_deep_swi')
   }
 });
